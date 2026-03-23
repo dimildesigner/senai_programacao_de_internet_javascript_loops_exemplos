@@ -9,30 +9,48 @@ console.log("** Regras: Números de 1 a 10 e você tem 5 tentativas\n");
 
 const prompt = require('prompt-sync')()
 
-let numeroSecreto = "6"
+let numeroSecreto = 6
+let tentativas = 2 //CONTADOR DE TENTATIVAS
 
-let palpite = prompt("Adivinhe o número secreto: ");
+console.log("TENTATIVA: 1")
+
+let palpite = Number(prompt("Adivinhe o número secreto: "));
 if(palpite == numeroSecreto){
-    console.log("\nParabéns! Você acertou! 🎉🎉🎉");
+    console.log("\nVocê acertou! Parabéns! 🎉🎉🎉");
+    console.log(">>>>>>>>>\n");
+    console.log("\n>>>> Fim do Jogo <<<<\n");
 }
 
 while(palpite != numeroSecreto){
+
+    console.log("\n>> Você errou‼");
     
     if(palpite < numeroSecreto){
-        console.log("\nVocê errou‼ O número é maior. ⬆");
+        console.log(">> O número é maior. ⬆");
         console.log(">>>>>>>>>\n");
-        palpite = prompt(">> Continue tentando: ");
     }
 
-    if(palpite > numeroSecreto){
-        console.log("\nVocê errou‼ O número é menor. ⬇");
+    else{
+        console.log(">> O número é menor. ⬇");
         console.log(">>>>>>>>>\n");
-        palpite = prompt(">> Continue tentando: ");
+    }
+
+    console.log(">> Nova Tentativa\n");
+    console.log("TENTATIVA: " + tentativas)
+    palpite = Number(prompt("Adivinhe o número secreto: "));
+
+    tentativas++
+    if (tentativas === 6) {
+        console.log("\n>> Acabaram suas tentativas!");
+        console.log(">>>>>>>>>\n");
+        console.log("\n>>>> Fim do Jogo <<<<\n");
+        break
     }
 
     if(palpite == numeroSecreto){
-        console.log("\nParabéns! Você acertou! 🎉🎉🎉");
+        console.log("\nVocê acertou! Parabéns! 🎉🎉🎉");
         console.log(">>>>>>>>>\n");
+        console.log("\n>>>> Fim do Jogo <<<<\n");
         break
     }
 }
